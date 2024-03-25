@@ -33,7 +33,7 @@ public class UserController {
 		UserVo authUser= userService.exeLogin(userVo);//id,pw넘기고 no,name가져오기
 		System.out.println(authUser);
 		
-		//토큰발급 헤더에 실어 보낸다.
+		//토큰발급 헤더에 실어 보낸다.-이 타이밍에 토큰발급됨
 //		JwtUtil jwtUtil= new JwtUtil();- 스테틱에 올라가있으니 new 안해도됨(시작할때 이미 올라가있음): 클래스 이름으로 올라감.(처음에 우리가 정한 이름이 없으니까!!)
 		if(authUser !=null) {//로그인성공
 			JwtUtil.createTokenAndSetHeader(response, ""+authUser.getNo());//name은 동명이인있을 수 있으니 no만 줌			
