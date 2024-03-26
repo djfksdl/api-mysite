@@ -13,7 +13,7 @@ public class UserDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	//!로그인!
+	//로그인
 	public UserVo userSelectByIdPw(UserVo userVo) {
 		System.out.println("UserDao.userSelectByIdPw");
 		
@@ -24,5 +24,23 @@ public class UserDao {
 		return authUser;
 		
 	}
+	
+	//조회no(회원정보수정 폼)로 한명데이터 가져오기
+	public UserVo userSelectOneByNo(int no) {
+		System.out.println("UserDao.userSelectOneByNo()");
+		
+		UserVo userVo = sqlSession.selectOne("user.selectOneByNo", no);
+		return userVo;
+	}
+	
+	//회원정보 수정하기
+	public int userUpdate(UserVo userVo) {
+		System.out.println("UserDao.userUpdate");
+		
+		int count = sqlSession.update("user.update", userVo);
+		
+		return count;
+	}
+	
 	
 }
