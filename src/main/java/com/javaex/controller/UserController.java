@@ -102,9 +102,9 @@ public class UserController {
 			userService.exeModify(userVo);
 			
 			//쌤이 쓰신방법
-//			return userVo.getName();//vue에서 response.dasta쓸땐 요걸로 써줘야함.
+//			return userVo.getName();//vue에서 response.data쓸땐 요걸로 써줘야함.
 			
-			return JsonResult.success(userVo.getName());
+			return JsonResult.success(userVo.getName());//이 값이 apiData가 된다.
 		}else {
 //			return "";
 			return JsonResult.fail("로그인하지 않음");
