@@ -111,6 +111,17 @@ public class UserController {
 		}
 		
 	}
+	//회원가입
+	@PostMapping("/api/users/join")
+	public JsonResult join(@RequestBody UserVo userVo) {
+		System.out.println("UserController.join");
+		
+		int count =userService.exeJoin(userVo);
+		
+		return JsonResult.success(count);
+		
+		
+	}
 	
 	
 	

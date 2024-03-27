@@ -35,4 +35,13 @@ public class UserService {
 		int count = userDao.userUpdate(userVo);
 		return count;
 	}
+	
+	//회원가입
+	public int exeJoin(UserVo userVo) {
+		System.out.println("UserService.exeJoin()");
+		
+		int count = userDao.userJoin(userVo);
+		
+		return count;
+	}
 }

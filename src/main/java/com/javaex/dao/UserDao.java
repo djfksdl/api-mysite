@@ -42,5 +42,13 @@ public class UserDao {
 		return count;
 	}
 	
+	//회원가입
+	public int userJoin(UserVo userVo) {
+		System.out.println("UserDao.userJoin");
+		
+		int count = sqlSession.insert("user.insert", userVo);
+		return count;
+	}
+	
 	
 }
