@@ -37,4 +37,13 @@ public class GuestbookService {
 		
 		return gVo;
 	}
+	
+	//삭제하기
+	public int exeRemove(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookService.exeRemove");
+		
+		int count = guestbookDao.guestDelete(guestbookVo);
+		
+		return count;
+	}
 }

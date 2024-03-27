@@ -40,5 +40,14 @@ public class GuestbookDao {
 		return gVo;
 	}
 	
+	//삭제하기
+	public int guestDelete(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookDao.guestDelete");
+		
+		int count = sqlSession.delete("guestbook.delete", guestbookVo);
+		
+		return count;
+	}
+	
 	
 }
