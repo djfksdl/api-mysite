@@ -53,6 +53,6 @@ public class GuestbookController {
 		
 		int count = guestbookService.exeRemove(guestbookVo);
 		
-		return null;
+		return JsonResult.success(count);
 	}
 }
