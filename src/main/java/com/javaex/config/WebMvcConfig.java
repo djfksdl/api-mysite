@@ -2,6 +2,7 @@ package com.javaex.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -16,4 +17,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.allowCredentials(true); // 쿠키허용
 
 	}
+	
+	//파일 드라이브뒤지도록 하는 메소드
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	registry.addResourceHandler("/upload/**")// '/upload/'로 요청이 오면 C드라이블 뒤질 수 있도록 우리가 가상으로 만든거임.
+	.addResourceLocations("file:C:\\javaStudy\\upload\\");
+	}
+
 }
