@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.javaex.service.BoardService;
 import com.javaex.util.JsonResult;
 import com.javaex.vo.BoardVo;
-
-import jakarta.servlet.http.HttpServlet;
 
 @RestController
 public class BoardController {
@@ -33,7 +32,7 @@ public class BoardController {
 		return JsonResult.success(boardList);
 	}
 	
-	//한명 글쓴거 가져오기
+	//한명 글쓴거 가져오기(리스트중 하나 클릭, 수정폼)
 	@GetMapping("/api/boards/{no}")
 	public JsonResult readOne(@PathVariable(value="no")int no) {
 		System.out.println("BoardController.readOne");
@@ -61,6 +60,16 @@ public class BoardController {
 		System.out.println("BoardController.addWirte");
 		
 		int count = boardService.exeAdd(boardVo);
+		
+		return JsonResult.success(count);
+	}
+	
+	//수정
+	@PutMapping("/api/boards")
+	public JsonResult update(@RequestBody BoardVo boardVo) {
+		System.out.println("BoardController.update");
+		
+		int count = boardService.exeUpdate(boardVo);
 		
 		return JsonResult.success(count);
 	}

@@ -48,4 +48,12 @@ public class BoardService {
 		int count = boardDao.insert(boardVo);
 		return count ;
 	}
+	
+	//수정
+	public int exeUpdate(BoardVo boardVo) {
+		System.out.println("BoardService.exeUpdate");
+		
+		int count = boardDao.update(boardVo);
+		return count;
+	}
 }

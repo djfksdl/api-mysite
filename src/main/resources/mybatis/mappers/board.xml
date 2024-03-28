@@ -48,4 +48,15 @@
 			values(null, #{title} ,#{content}, 0, now(), #{user_no})
 		]]>
 	</insert>
+	
+	<!-- 수정 -->
+	<update id="update" parameterType="com.javaex.vo.BoardVo">
+		<![CDATA[
+			update board
+			set title=#{title}
+				,content=#{content}
+			where no= #{no}
+		]]>
+	</update>
+	
 </mapper>

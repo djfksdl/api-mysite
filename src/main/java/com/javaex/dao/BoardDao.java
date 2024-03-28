@@ -49,4 +49,13 @@ public class BoardDao {
 		
 		return count;
 	}
+	
+	//수정
+	public int update(BoardVo boardVo) {
+		System.out.println("BoardDao.update");
+		
+		int count = sqlSession.update("board.update", boardVo);
+		
+		return count;
+	}
 }
