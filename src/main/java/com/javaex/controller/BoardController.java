@@ -3,13 +3,19 @@ package com.javaex.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javaex.service.BoardService;
 import com.javaex.util.JsonResult;
 import com.javaex.vo.BoardVo;
+
+import jakarta.servlet.http.HttpServlet;
 
 @RestController
 public class BoardController {
@@ -34,9 +40,29 @@ public class BoardController {
 		
 //		System.out.println(no);
 		
-		List<BoardVo> bVo = boardService.exeSelectOne(no);
+		BoardVo bVo = boardService.exeSelectOne(no);
 		
 		return JsonResult.success(bVo);
+	}
+	
+	//삭제
+	@DeleteMapping("/api/boards")
+	public JsonResult remove(@RequestParam(value="no")int no) {
+		System.out.println("BoardController.remove");
+		
+		int count =boardService.exeRemove(no);
+		
+		return JsonResult.success(count);
+	}
+	
+	//글쓰기
+	@PostMapping("/api/boards")
+	public JsonResult addWirte(@RequestBody BoardVo boardVo ) {
+		System.out.println("BoardController.addWirte");
+		
+		int count = boardService.exeAdd(boardVo);
+		
+		return JsonResult.success(count);
 	}
 	
 	

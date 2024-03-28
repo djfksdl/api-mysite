@@ -24,11 +24,28 @@ public class BoardService {
 	}
 	
 	//한명 글쓴거 가져오기
-	public List<BoardVo> exeSelectOne(int no) {
+	public BoardVo exeSelectOne(int no) {
 		System.out.println("BoardService.exeSelectOne");
 		
-		List<BoardVo> bVo = boardDao.selectByNo(no);
+		BoardVo bVo = boardDao.selectByNo(no);
 		
 		return bVo;
+	}
+	
+	//삭제
+	public int exeRemove(int no) {
+		System.out.println("BoardService.exeRemove");
+		
+		int count = boardDao.delete(no);
+		
+		return count ;
+	}
+	
+	//글쓰기
+	public int exeAdd(BoardVo boardVo) {
+		System.out.println("BoardService.exeAdd");
+		
+		int count = boardDao.insert(boardVo);
+		return count ;
 	}
 }

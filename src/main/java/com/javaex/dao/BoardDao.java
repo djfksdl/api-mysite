@@ -24,11 +24,29 @@ public class BoardDao {
 	}
 	
 	//한명 글쓴거 가져오기
-	public List<BoardVo> selectByNo(int no) {
+	public BoardVo selectByNo(int no) {
 		System.out.println("BoardDao.boardSelectByNo");
 		
-		List<BoardVo> bVo = sqlSession.selectOne("board.selectByNo", no);
+		BoardVo bVo = sqlSession.selectOne("board.selectByNo", no);
 		
 		return bVo;
+	}
+	
+	//삭제
+	public int delete(int no) {
+		System.out.println("BoardDao.delete");
+		
+		int count = sqlSession.delete("board.delete", no);
+		
+		return count;
+	}
+	
+	//글쓰기
+	public int insert(BoardVo boardVo) {
+		System.out.println("BoardDao.insert");
+		
+		int count = sqlSession.insert("board.insert", boardVo);
+		
+		return count;
 	}
 }
